@@ -4,7 +4,7 @@ import { IComplaint } from "@/models/Complaint";
 //env var
 const EMAIL_USER = process.env.EMAIL_USER;
 const EMAIL_PASS = process.env.EMAIL_PASS;
-const ADMIN_EMAIL = process.env.ADMIN_EMAIL;
+const ADMIN_EMAIL = process.env.EMAIL_ADMIN;
 
 // nodemailer transporter
 const transporter = nodemailer.createTransport({
@@ -89,7 +89,5 @@ export const sendComplaintEmail = async (
     console.log(`Email sent successfully: ${info.messageId} (Type: ${type})`);
   } catch (error) {
     console.error(`Failed to send ${type} email:`, error);
-    // It's crucial not to throw an error here, so the API request doesn't fail
-    // just because the email failed (fail-safe).
   }
 };
