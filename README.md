@@ -21,26 +21,48 @@ You must have the following installed:
 **2. Installation**
 
 Clone the repository and install the dependencies:
+
 ```
+
 git clone [YOUR_REPOSITORY_URL]
 cd complaint-management-system
 npm install
 # or
 yarn install
+
 ```
 
 **3. Environment Configuration (.env.local)**
 
 You must create a file named .env.local in the root directory of the project and define the following variables:
 
-a. DATABASE CONFIGURATION (MongoDB Atlas)
-```
-# This URI is necessary to connect to your MongoDB Atlas cluster.
-MONGODB_URI="mongodb+srv://<username>:<password>@cluster0.abcde.mongodb.net/complaint_db?retryWrites=true&w=majority"
+
+### a. DATABASE CONFIGURATION (MongoDB Atlas)
+
 ```
 
-b. EMAIL CONFIGURATION (Nodemailer via SMTP)
+# This URI is necessary to connect to your MongoDB Atlas cluster.
+MONGODB_URI="mongodb+srv://<username>:<password>@cluster0.abcde.mongodb.net/complaint_db?retryWrites=true&w=majority"
+
 ```
+
+
+### b. EMAIL CONFIGURATION (Nodemailer via SMTP)
+
+The application uses Nodemailer, configured with Gmail's SMTP settings, to send notifications. Functional email is a mandatory requirement.
+
+  - **Obtain App Password:**
+    
+    Due to modern security protocols, you cannot use your regular Gmail password. You must generate a 16-character App Password from your Google Account security settings.
+    
+    Path: Google Account → Security → 2-Step Verification → App Passwords
+    
+  - **Set Environment Variables:**
+    
+    Add the following three variables to your .env.local file (for local testing) and to your Vercel Project Settings (for deployment)
+
+```
+
 # The email address used to send notifications (e.g., your admin email)
 EMAIL_USER="your.sending.email@gmail.com" 
 
@@ -50,18 +72,23 @@ EMAIL_PASS="YOUR_16_CHARACTER_APP_PASSWORD"
 
 # The recipient email address for all notifications (e.g., the Admin)
 ADMIN_EMAIL="admin.recipient@example.com"
+
 ```
 
 **4. Running the Application**
 
 Start the development server:
+
 ```
+
 npm run dev
 # or
 yarn dev
+
 ```
 
 The application will be accessible at http://localhost:3000.
+
 
 ## 💻 Application Usage Guide
 
