@@ -10,7 +10,7 @@ interface Params {
 }
 
 export async function PATCH(request: Request, { params }: Params) {
-  const { id } = params;
+  const { id } = await params;
   try {
     await connectDB();
 
@@ -53,7 +53,7 @@ export async function PATCH(request: Request, { params }: Params) {
 }
 
 export async function DELETE(request: Request, { params }: Params) {
-  const { id } = params;
+  const { id } = await params;
   try {
     const deletedComplaint = await Complaint.findByIdAndDelete(id);
     if (!deletedComplaint) {
