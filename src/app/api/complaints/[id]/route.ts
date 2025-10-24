@@ -3,12 +3,8 @@ import { connectDB } from "@/lib/mongodb/connect";
 import Complaint, { IComplaint } from "@/models/Complaint";
 import { sendComplaintEmail } from "@/services/emailService";
 
-interface RouteParams {
-  id: string;
-}
-
-export async function PATCH(request: Request, { params }: { params: RouteParams }) {
-  const { id } = await params;
+export async function PATCH(request: Request, context: { params: Promise<{ id: string }> }) {
+  const { id } = await context.params;
   try {
     await connectDB();
 
@@ -23,7 +19,7 @@ export async function PATCH(request: Request, { params }: { params: RouteParams 
 
     const updatedComplaint = await Complaint.findByIdAndUpdate(
       id,
-      { status, dateSubmitted: new Date() },
+      { status, updatedAt: new Date() },
       { new: true, runValidators: true }
     );
 
@@ -50,9 +46,10 @@ export async function PATCH(request: Request, { params }: { params: RouteParams 
   }
 }
 
-export async function DELETE(request: Request, { params }: { params: RouteParams }) {
-  const { id } = await params;
+export async function DELETE(request: Request, context: { params: Promise<{ id: string }> }) {
+  const { id } = await context.params;
   try {
+    await connectDB();
     const deletedComplaint = await Complaint.findByIdAndDelete(id);
     if (!deletedComplaint) {
       return NextResponse.json(
