@@ -98,6 +98,6 @@ To fulfill the visual and deployment requirements, please ensure you complete th
   Live Demo Link: https://complaint-management-2s6p7fgac-jatin02kr-gmailcoms-projects.vercel.app
 
 - Screenshots:
-   - ![User Form screenshot](./User_panel.png)
-   - ![Admin Tabel Screenshot](./Admin_panel.png)
-   - ![Mail Screenshot](./Mail.png)
+   - ![User Form screenshot](public/user.png)
+   - ![Admin Tabel Screenshot](public/admin.png)
+  
