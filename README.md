@@ -98,6 +98,6 @@ To fulfill the visual and deployment requirements, please ensure you complete th
   Live Demo Link: [PASTE LIVE VERCELL/HEROKU URL HERE]
 
 - Screenshots:
-   - ![Screenshot of User Submission Form](User_panel.png)
-   - ![Admin Table Screenshot](Admin_panel.png)
-   - ![Mail Screenshot](Mail.png)
+   - ![User Form screenshot](./User_panel.png)
+   - ![Admin Tabel Screenshot](./Admin_panel.png)
+   - ![Mail Screenshot](./Mail.png)
