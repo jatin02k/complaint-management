@@ -3,13 +3,11 @@ import { connectDB } from "@/lib/mongodb/connect";
 import Complaint, { IComplaint } from "@/models/Complaint";
 import { sendComplaintEmail } from "@/services/emailService";
 
-interface Params {
-  params: {
-    id: string;
-  };
+interface RouteParams {
+  id: string;
 }
 
-export async function PATCH(request: Request, { params }: Params) {
+export async function PATCH(request: Request, { params }: { params: RouteParams }) {
   const { id } = await params;
   try {
     await connectDB();
@@ -52,7 +50,7 @@ export async function PATCH(request: Request, { params }: Params) {
   }
 }
 
-export async function DELETE(request: Request, { params }: Params) {
+export async function DELETE(request: Request, { params }: { params: RouteParams }) {
   const { id } = await params;
   try {
     const deletedComplaint = await Complaint.findByIdAndDelete(id);
