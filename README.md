@@ -1,36 +1,103 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# 💼 Full-Stack Complaint Management System
 
-## Getting Started
+This project is a comprehensive full-stack web application developed using Next.js (TypeScript), React, and Tailwind CSS for the frontend, with Mongoose/MongoDB for data persistence and Nodemailer for email notifications.
 
-First, run the development server:
+It implements a dual-role system: a User/Client interface for submitting complaints, and an Admin interface for viewing, filtering, updating, and deleting those complaints (full CRUD operations).
 
-```bash
+## 🛠️ Local Setup Instructions
+
+Follow these steps to get the application running on your local machine.
+
+**1. Prerequisites**
+
+You must have the following installed:
+
+- Node.js (LTS version recommended)
+
+- npm or yarn
+
+- Git
+
+**2. Installation**
+
+Clone the repository and install the dependencies:
+```
+git clone [YOUR_REPOSITORY_URL]
+cd complaint-management-system
+npm install
+# or
+yarn install
+```
+
+**3. Environment Configuration (.env.local)**
+
+You must create a file named .env.local in the root directory of the project and define the following variables:
+
+a. DATABASE CONFIGURATION (MongoDB Atlas)
+```
+# This URI is necessary to connect to your MongoDB Atlas cluster.
+MONGODB_URI="mongodb+srv://<username>:<password>@cluster0.abcde.mongodb.net/complaint_db?retryWrites=true&w=majority"
+```
+
+b. EMAIL CONFIGURATION (Nodemailer via SMTP)
+```
+# The email address used to send notifications (e.g., your admin email)
+EMAIL_USER="your.sending.email@gmail.com" 
+
+# The App Password or SMTP password for the above account. 
+# NOTE: For Gmail, this MUST be the 16-character App Password, not your regular login password.
+EMAIL_PASS="YOUR_16_CHARACTER_APP_PASSWORD" 
+
+# The recipient email address for all notifications (e.g., the Admin)
+ADMIN_EMAIL="admin.recipient@example.com"
+```
+
+**4. Running the Application**
+
+Start the development server:
+```
 npm run dev
 # or
 yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+The application will be accessible at http://localhost:3000.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## 💻 Application Usage Guide
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+The application uses a ViewSwitcher (Navbar) to toggle between two distinct interfaces:
 
-## Learn More
+**1. User Submission View**
 
-To learn more about Next.js, take a look at the following resources:
+- Access: Click the User Submission button.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+- Action: Fill out the form fields (Title, Description, Category, Priority) and click Submit Complaint.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+- Result: The complaint is saved to MongoDB, and an email notification is sent to the Admin at the ADMIN_EMAIL address.
 
-## Deploy on Vercel
+**2. Admin Management Panel**
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+- Access: Click the Admin Management button. This triggers a GET request to fetch the latest data.
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+- Data View: All submitted complaints are displayed in a responsive table.
+
+- Interactions:
+
+  - Filtering: Use the dropdowns at the top to filter complaints by Status or Priority (client-side filtering).
+
+  - Update Status: Change the status using the dropdown in the Status column (executes a PATCH request, which triggers a status confirmation email).
+
+  - Delete: Use the trash can icon in the Actions column (executes a DELETE request).
+
+## 📸 Screenshots and Live Demo
+
+To fulfill the visual and deployment requirements, please ensure you complete the following steps:
+
+- Deployment: Deployed the application to Vercel.
+
+  Live Demo Link: [PASTE LIVE VERCELL/HEROKU URL HERE]
+
+- Screenshots:
+   - ![Screenshot of User Submission Form](User_panel.png)
+   - ![Admin Table Screenshot](Admin_panel.png)
+   - ![Mail Screenshot](Mail.png)
