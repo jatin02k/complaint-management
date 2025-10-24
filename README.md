@@ -95,7 +95,7 @@ To fulfill the visual and deployment requirements, please ensure you complete th
 
 - Deployment: Deployed the application to Vercel.
 
-  Live Demo Link: [PASTE LIVE VERCELL/HEROKU URL HERE]
+  Live Demo Link: https://complaint-management-2s6p7fgac-jatin02kr-gmailcoms-projects.vercel.app
 
 - Screenshots:
    - ![User Form screenshot](./User_panel.png)
