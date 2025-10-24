@@ -24,7 +24,7 @@ Clone the repository and install the dependencies:
 
 ```
 
-git clone [YOUR_REPOSITORY_URL]
+git clone https://github.com/jatin02k/complaint-management
 cd complaint-management-system
 npm install
 # or
@@ -42,6 +42,7 @@ You must create a file named .env.local in the root directory of the project and
 ```
 
 # This URI is necessary to connect to your MongoDB Atlas cluster.
+
 MONGODB_URI="mongodb+srv://<username>:<password>@cluster0.abcde.mongodb.net/complaint_db?retryWrites=true&w=majority"
 
 ```
@@ -64,13 +65,16 @@ The application uses Nodemailer, configured with Gmail's SMTP settings, to send 
 ```
 
 # The email address used to send notifications (e.g., your admin email)
+
 EMAIL_USER="your.sending.email@gmail.com" 
 
 # The App Password or SMTP password for the above account. 
 # NOTE: For Gmail, this MUST be the 16-character App Password, not your regular login password.
+
 EMAIL_PASS="YOUR_16_CHARACTER_APP_PASSWORD" 
 
 # The recipient email address for all notifications (e.g., the Admin)
+
 ADMIN_EMAIL="admin.recipient@example.com"
 
 ```
